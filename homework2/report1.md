@@ -43,13 +43,13 @@ $$
 
 1. **加法運算 (**$P_1 + P_2$**)**：
 
-   * 比較 $x^2$ 項：$P_1$ 有 $3x^2$，$P_2$ 無此項，取 $3x^2$。
+   * 比較 $x^2$ 項： $P_1$ 有 $3x^2$， $P_2$ 無此項，取 $3x^2$。
 
-   * 比較 $x^1$ 項：$P_1$ 係數為 2，$P_2$ 係數為 2，相加得 $(2 + 2)x = 4x$。
+   * 比較 $x^1$ 項： $P_1$ 係數為 2， $P_2$ 係數為 2，相加得 $(2 + 2)x = 4x$。
 
-   * 比較常數項：$P_1$ 為 1，$P_2$ 為 4，相加得 $1 + 4 = 5$。
+   * 比較常數項： $P_1$ 為 1， $P_2$ 為 4，相加得 $1 + 4 = 5$。
 
-   * **結果為**：$3x^2 + 4x + 5$。
+   * **結果為**： $3x^2 + 4x + 5$。
 
 2. **乘法運算 (**$P_1 \times P_2$**)**：
 
@@ -59,7 +59,7 @@ $$
 
    * $1 \times (2x + 4) = 2x + 4$
 
-   * 累加合併同類項得：$6x^3 + 16x^2 + 10x + 4$。
+   * 累加合併同類項得： $6x^3 + 16x^2 + 10x + 4$。
 
 ## 程式實作
 
@@ -68,10 +68,9 @@ $$
 ```
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
-// 前置宣告 Polynomial 類別，供 Term 定義 friend
+// 前置宣告 Polynomial 類別，供 Term 定義 friend**
 class Polynomial;
 
 // Term 類別：表示多項式中的單一項
@@ -136,7 +135,7 @@ public:
         delete[] termArray;
     }
 
-    // 賦值運算子多載（深拷貝）
+    // 賦值運算子多載（深拷貝）**
     Polynomial& operator=(const Polynomial& poly) {
         if (this == &poly) return *this;
         delete[] termArray;
@@ -217,7 +216,7 @@ istream& operator>>(istream& is, Polynomial& poly) {
     cout << "輸入非零項的數量: ";
     if (!(is >> n)) return is;
 
-    // 清空現有項
+    // 清空現有項 重複利用
     poly.terms = 0;
 
     cout << "請依序輸入各項的 [係數 指數]（依指數由大到小排序）:\n";
@@ -299,7 +298,7 @@ int main() {
 
 ## 效能分析
 
-設多項式 $P_1$ 之非零項數為 $m$，$P_2$ 之非零項數為 $n$：
+設多項式 $P_1$ 之非零項數為 $m$， $P_2$ 之非零項數為 $n$：
 
 1. **加法運算 (`Add`)**：
 
@@ -321,7 +320,7 @@ int main() {
 
 4. **擴容機制 (`NewTerm`)**：
 
-   * 時間複雜度：採用倍增策略（Doubling Strategy），單次搬移最差為 $O(m)$，但攤銷時間複雜度（Amortized Time Complexity）為 $O(1)$。
+   * 時間複雜度：採用倍增策略，單次搬移最差為 $O(m)$，但時間複雜度為 $O(1)$。
 
 ## 測試與驗證
 
